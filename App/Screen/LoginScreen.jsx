@@ -1,8 +1,16 @@
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { Colors } from "react-native/Libraries/NewAppScreen";
+import { useWarmUpBrowser } from "../hooks/warmUpBrowser";
+import * as WebBrowser from "expo-web-browser";
+import { useOAuth } from "@clerk/clerk-expo"; // 클럭 유저 인증을 넣어여 오류가 사라짐
+
+WebBrowser.maybeCompleteAuthSession();
 
 export default function LoginScreen() {
+  useWarmUpBrowser();
+  const { startOAuthFlow } = useOAuth({ strategy: "oauth_google" });
+
   const onPress = async () => {
     try {
       const { createdSessionId, signIn, signUp, setActive } =

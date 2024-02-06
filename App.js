@@ -4,7 +4,7 @@ import { StyleSheet, Text, View } from "react-native";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
 import LoginScreen from "./App/Screen/LoginScreen";
-import { ClerkProvider } from "@clerk/clerk-expo";
+import { ClerkProvider, SignedIn, SignedOut } from "@clerk/clerk-expo";
 
 SplashScreen.preventAutoHideAsync();
 
@@ -32,7 +32,12 @@ export default function App() {
       }
     >
       <View style={styles.container} onLayout={onLayoutRootView}>
-        <LoginScreen />
+        <SignedIn>
+          <Text>로그인 성공!</Text>
+        </SignedIn>
+        <SignedOut>
+          <LoginScreen />
+        </SignedOut>
         <StatusBar style="auto" />
       </View>
     </ClerkProvider>
