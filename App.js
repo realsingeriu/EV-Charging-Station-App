@@ -10,7 +10,7 @@ export default function App() {
   const [fontsLoaded] = useFonts({
     "Pretend-Regular": require("./assets/fonts/Pretendard-Regular.otf"),
     "Pretend-Medium": require("./assets/fonts/Pretendard-Medium.otf"),
-    "Pretend-Bold": require("./assets/fonts/Pretendard-Bold.otf"),
+    "Pretend-SemiBold": require("./assets/fonts/Pretendard-SemiBold.otf"),
   });
 
   const onLayoutRootView = useCallback(async () => {
