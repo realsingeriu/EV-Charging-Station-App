@@ -58,7 +58,7 @@ const styles = StyleSheet.create({
   },
   bgImage: {
     width: "100%",
-    height: 250,
+    height: 260,
     marginTop: 20,
     objectFit: "cover",
   },
