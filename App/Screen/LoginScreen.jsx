@@ -1,10 +1,26 @@
-import { View, Text } from "react-native";
+import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
 import React from "react";
+import { Colors } from "react-native/Libraries/NewAppScreen";
 
 export default function LoginScreen() {
+  const onPress = async () => {
+    try {
+      const { createdSessionId, signIn, signUp, setActive } =
+        await startOAuthFlow();
+
+      if (createdSessionId) {
+        setActive({ session: createdSessionId });
+      } else {
+        // Use signIn or signUp for next steps such as MFA
+      }
+    } catch (err) {
+      console.error("OAuth error", err);
+    }
+  };
   return (
     <View
       style={{
+        width: "100%",
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
@@ -48,7 +64,7 @@ const styles = StyleSheet.create({
   },
   heading: {
     fontSize: 25,
-    fontFamily: "Pretend-Bold",
+    fontFamily: "Pretend-SemiBold",
     textAlign: "center",
     marginTop: 20,
   },
